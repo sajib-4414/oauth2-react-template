@@ -39,6 +39,11 @@ const getTokenParsed = () => _kc.tokenParsed;
 
 const isLoggedIn = () => !!_kc.token;
 
+/*_kc.updateToken(5) checks if the current token will expire within 5 seconds
+If the token is still valid for more than 5 seconds, it resolves immediately
+If the token will expire soon, it attempts to get a new token using the refresh token
+If the token update is successful, it calls the provided successCallback function
+*/
 const updateToken = (successCallback) =>
   _kc.updateToken(5)
     .then(successCallback)

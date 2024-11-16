@@ -1,12 +1,13 @@
+import AuthService from "../config/AuthService";
 
 
 const PrivateRoute = ({ children }) => {
-    // const { keycloak } = useKeycloak();
+    
 
-    // if (!keycloak.authenticated) {
-    //     keycloak.login();
-    //     return null;
-    // }
+    if (!AuthService.isLoggedIn()) {
+        AuthService.doLogin();
+        return null;
+    }
 
     return children;
 };
